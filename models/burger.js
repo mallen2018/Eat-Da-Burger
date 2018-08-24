@@ -3,7 +3,7 @@ var orm = require("../config/orm.js");
 
 var burger = {
     all: function(cb) {
-        orm.allOrder("burgers", "date, id", function(res) {
+        orm.allOrder("burgers",  "id", function(res) {
             cb(res);
         });
     },
@@ -13,8 +13,7 @@ var burger = {
         });
     },
     update: function(objColVals, condition, cb) {
-        objColVals.date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-        orm.update("burgers", objColVals, condition, function(res) {
+            orm.update("burgers", objColVals, condition, function(res) {
             cb(res);
         });
     },
